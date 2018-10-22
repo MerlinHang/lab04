@@ -111,7 +111,24 @@ module.exports = {
 
         return res.view('person/index', { persons: models });
     },
+    // Pagination function
+    pahinate: async function (req, res) {
 
+        const qPage = Math.max(req.query.page - 1, 0) || 0;
+
+        const numOfItemPerPages = 2;
+
+        var model = await Person.find({
+            limit: numOfItemPerPages,
+            skip: numOfItemPerPages * qPage
+
+        });
+
+
+        var numOfPage = Math.ceil(await Person.count() / numOfItemPerPages);
+
+        return res.view('person/paginate',{persons:models,count:numOfPage});
+    },
 };
 
 
