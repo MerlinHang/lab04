@@ -1,10 +1,20 @@
 <%= person.name %>
-<%= person.age %>
-<br><br>
+    <%= person.age %>
+        <br>
+        <br>
 
-<form action="/person/delete/<%=person.id%>" method="POST">
+        <form action="/person/delete/<%=person.id%>" method="POST">
+            <select>
+                <option value="dummy">dummy</option>
+                <option value="Element">Elements</option>
 
+            </select>
 
+            <input type="text" class="datepicker">
+            <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
 
-    <button  class="btn btn-danger" type="submit" >Delete</button>
-</form>
+        <script>
+            document.querySelector('option[value="Element"]').selected = "selected";
+
+        </script>
